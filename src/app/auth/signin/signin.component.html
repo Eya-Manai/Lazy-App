@@ -1,0 +1,45 @@
+<form #ngForm="ngForm">
+  <div class="mb-3"><h1>Sign In</h1></div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input
+      class="form-control"
+      name="email"
+      type="email"
+      placeholder="taper votre email ici "
+      [(ngModel)]="utilisateur.email"
+      #email="ngModel"
+      required
+    />
+    <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors && email.errors['required']">
+        L'email est obligatoire
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input
+      class="form-control"
+      name="password"
+      type="password"
+      placeholder="taper votre password ici "
+      [(ngModel)]="utilisateur.password"
+      #password="ngModel"
+      required
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="password.touched && password.invalid"
+    >
+      <div *ngIf="password.errors && password.errors['required']">
+        Le password est obligatoire
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 text-center">
+    <button disabled="ngForm.invalid" class="btn btn-primary">Connexion</button>
+    <br />
+    <a routerLink="./register">S'inscrire</a>
+  </div>
+</form>

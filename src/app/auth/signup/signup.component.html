@@ -1,0 +1,89 @@
+<form #signForm="ngForm">
+  <div class="mb-3"><h1>Sign Up</h1></div>
+  <div class="mb-3">
+    <label class="form-label">Nom</label>
+    <input
+      class="form-control"
+      name="nom"
+      type="nom"
+      placeholder="taper votre Nom  ici "
+      [(ngModel)]="utilisateur.nom"
+      #nom="ngModel"
+      pattern="[A-Z a-z]{3,20}"
+      required
+    />
+    <div class="alert alert-danger" *ngIf="nom.touched && nom.invalid">
+      <div *ngIf="nom.errors && nom.errors['required']">
+        Le nom est obligatoire
+      </div>
+      <div *ngIf="nom.errors && nom.errors['pattern']">
+        Veuillez saisir un nom valide
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Prenom</label>
+    <input
+      class="form-control"
+      name="prenom"
+      type="prenom"
+      placeholder="taper votre Nom ici "
+      [(ngModel)]="utilisateur.prenom"
+      #prenom="ngModel"
+      pattern="[A-Z a-z]{3,20}"
+      required
+    />
+    <div class="alert alert-danger" *ngIf="prenom.touched && prenom.invalid">
+      <div *ngIf="prenom.errors && prenom.errors['required']">
+        Le prenom est obligatoire
+      </div>
+      <div *ngIf="prenom.errors && prenom.errors['pattern']">
+        Veuillez saisir un prenom valide
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input
+      class="form-control"
+      name="email"
+      type="email"
+      placeholder="taper votre email ici "
+      [(ngModel)]="utilisateur.email"
+      #email="ngModel"
+      required
+    />
+    <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors && email.errors['required']">
+        L'email est obligatoire
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input
+      class="form-control"
+      name="password"
+      type="password"
+      placeholder="taper votre password ici "
+      [(ngModel)]="utilisateur.password"
+      #password="ngModel"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="password.touched && password.invalid"
+    >
+      <div *ngIf="password.errors && password.errors['required']">
+        Le password est obligatoire
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 text-center">
+    <button disabled="signForm.invalid" class="btn btn-primary">
+      Connexion
+    </button>
+    <br />
+    <a routerLink="">login</a>
+  </div>
+</form>
+<app-footer></app-footer>
